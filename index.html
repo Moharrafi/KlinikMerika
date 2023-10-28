@@ -1,0 +1,1208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='icon' href='img/logo.png'>
+    <title>Klinik Merika</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/feather-icons"></script>
+</head>
+
+<body>
+    <style>
+        :root {
+            --footer-background: #2681b6;
+            --text-color: #FAFBFC;
+            --text-gray: #FEFEFE;
+            --text-heading-gray: #F4F5F6;
+            --text-primary: #FAFBFC;
+            --button-color: #404652;
+            --button-border: #3b3c3d;
+            --background-dark: #2d3548;
+            --white: #FFF;
+            --primary: #645DFF;
+            --secondary: #2A2649;
+            --secondary-light: #777777;
+            --body-background: #efeefa;
+            --border: #E6E8F0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            outline: none;
+            border: none;
+            text-decoration: none;
+        }
+
+        body {
+            font-family: 'Poppins' sans-serif;
+            background-color: #81abcf54;
+            color: black;
+            min-height: auto;
+            margin: 0px;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.4rem 7%;
+            background-color: #bec7ce44;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 9999;
+        }
+
+        .navbar .navbar-logo img {
+            width: 90px;
+            height: 50px;
+            padding-right: 2rem;
+        }
+
+        .navbar .navbar-nav a {
+            color: #000000;
+            font-family: 'Poppins';
+            display: inline-block;
+            font-size: 1rem;
+            padding-top: 10px;
+            margin: 0 1rem;
+        }
+
+        .navbar .navbar-nav a:hover {
+            color: #0e8bc5cc;
+        }
+
+        .navbar .navbar-nav a::after {
+            content: '';
+            display: block;
+            padding-bottom: 0.5rem;
+            border-bottom: 0.1rem solid var(--footer-background);
+            transform: scaleX(0);
+            transition: 0.2s linear;
+        }
+
+        .navbar .navbar-nav a:hover::after {
+            transform: scaleX(0.6);
+        }
+
+        .navbar .navbar-extra a {
+            color: #000000;
+            margin: 0 0.5rem;
+            font-size: 20px;
+        }
+
+        .navbar .navbar-extra a:hover {
+            color: #3ee0cf;
+        }
+
+        .search {
+            position: relative;
+            width: 50px;
+            height: 30px;
+            border-radius: 20px;
+            padding: 10px;
+            transition-duration: 500ms;
+            cursor: pointer;
+            background-repeat: no-repeat;
+            font-size: 18px;
+            color: transparent;
+            border: 0px solid transparent;
+            overflow: hidden;
+            background: url(img/search.svg) no-repeat transparent;
+            background-size: 25px;
+            background-position: 45% 0%;
+        }
+
+        .search:hover {
+            cursor: pointer;
+            border: 0px solid;
+            background: url(img/search.svg) no-repeat transparent;
+            background-size: 25px;
+            background-position: 45% 0%;
+        }
+
+        .search:focus {
+            width: 200px;
+            cursor: pointer;
+            padding-left: 35px;
+            color: black;
+            outline: none;
+            border: 1px solid black;
+            background: url(img/search.svg) no-repeat transparent;
+            background-size: 22px;
+            background-position: 3% 50%;
+        }
+
+        #hamburger-menu {
+            display: none;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: grid;
+            align-items: center;
+            background-image: url('img/home.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            position: relative;
+            filter: brightness(80%);
+        }
+
+        .hero::after {
+            container: '';
+            display: block;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(0deg, rgb(100, 100, 189)3%, rgba(255, 255, 255, 0) 25%);
+        }
+
+        .hero .content {
+            /* padding: 1.4rem 3%; */
+            /* max-width: 60rem; */
+            position: relative;
+            text-align: center;
+        }
+
+        .hero .content h1 {
+            margin-top: 60px;
+            font-weight: 600;
+            font-size: 50px;
+            color: black;
+            line-height: 1;
+            letter-spacing: 2px;
+        }
+
+        .hero .content h1 span {
+            color: rgba(10, 151, 216, 0.8);
+        }
+
+        .hero .content p {
+            font-size: 16px;
+            font-family: 'Poppins';
+            margin-top: 0.2rem;
+            line-height: 1.2;
+            font-weight: 100;
+        }
+
+        .hero .content .btn {
+            margin-top: 1rem;
+            display: inline-block;
+            padding: 0.7rem 1.5rem;
+            font-family: 'Poppins';
+            font-size: 15px;
+            color: #ffff;
+            background-color: rgba(10, 151, 216, 0.8);
+            border-radius: 50px;
+        }
+
+        .hero .content .btn:hover {
+            background-color: #ffffff;
+            color: #000000;
+            transition: .3s;
+        }
+
+        .menu {
+            width: 80%;
+            margin: auto;
+            text-align: center;
+            padding-top: 25px;
+            margin-top: -20px;
+        }
+
+        .menu p {
+            font-size: 14px;
+            font-weight: 300;
+            line-height: 19px;
+            padding: 10px;
+        }
+
+        .menu .row .menu-col h3 {
+            font-size: 17px;
+            font-family: sans-serif;
+
+        }
+
+        .menu .row .menu-col i {
+            color: #ffff;
+            font-size: 35px;
+            text-align: center;
+        }
+
+        .menu .row .menu-col p {
+            color: #ffff;
+            font-size: 15px;
+            text-align: center;
+        }
+
+        .row {
+            margin-top: 15px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .menu-col {
+            flex-basis: 30%;
+            background: var(--footer-background);
+            border-radius: 10px;
+            margin-bottom: 5%;
+            padding: 20px 12px;
+            box-sizing: border-box;
+            cursor: pointer;
+            transition: .4s;
+        }
+
+        .menu-col:hover {
+            transform: scale(1.1);
+        }
+
+        .menu-col h3 {
+            text-align: center;
+            font-weight: 600;
+            margin: 10px 0;
+            color: white;
+        }
+
+        .menu-col .line {
+            margin-top: 1rem;
+            display: inline-block;
+            padding: 3px 60px;
+            font-family: 'Poppins';
+            width: 40px;
+            background-color: #fff;
+            border-radius: 2rem;
+        }
+
+        button:hover {
+            background-color: cadetblue;
+            color: #ffffff;
+        }
+
+        .menu-col i {
+            margin-top: 5px;
+            font-size: 25px;
+        }
+
+        .main {
+            display: flex;
+            flex-wrap: wrap;
+            width: 90%;
+            margin: auto;
+            margin-top: -40px;
+        }
+
+        .main .main-content {
+            position: relative;
+            margin-bottom: 4rem;
+            margin-top: 3rem;
+            width: 100%;
+        }
+
+        .main .main-content img {
+            position: relative;
+            float: left;
+            width: 450px;
+            height: 300px;
+            margin-right: 3rem;
+            object-fit: cover;
+            filter: brightness(75%);
+            border-radius: 0px 0px 0px 50px;
+            filter: drop-shadow(rgba(141, 141, 141, 0.699) 1rem 1rem 5px);
+        }
+
+        .main-content .content h2 {
+            font-family: 'Poppins';
+            font-size: 30px;
+            padding-bottom: 1rem;
+        }
+
+        .main .main-content h2 span {
+            color: var(--footer-background);
+        }
+
+        .main .main-content p {
+            text-align: justify;
+            font-size: 14px;
+            font-family: 'Poppins';
+        }
+
+        .video {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 3rem;
+        }
+
+        .main2 {
+            display: flex;
+            flex-wrap: wrap;
+            width: 90%;
+            margin: auto;
+            margin-top: -40px;
+        }
+
+        .main2 .main-content2 {
+            position: relative;
+            margin-bottom: 3rem;
+            margin-top: 3rem;
+            width: 100%;
+        }
+
+        .main2 .main-content2 img {
+            position: relative;
+            float: right;
+            width: 450px;
+            height: 300px;
+            margin-left: 3rem;
+            object-fit: cover;
+            filter: brightness(50%);
+            border-radius: 0px 0px 50px 0px;
+            filter: drop-shadow(rgba(141, 141, 141, 0.699) 1rem 1rem 5px);
+        }
+
+        #tombol {
+            margin-top: 15px;
+            display: inline-block;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            color: #ffffff;
+            background-color: var(--footer-background);
+            border-radius: 10px;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .main-content2 .content2 h2 {
+            font-family: 'Poppins';
+            font-size: 30px;
+            padding-bottom: 1rem;
+        }
+
+        .main2 .main-content2 h2 span {
+            color: var(--footer-background);
+        }
+
+        .main2 .main-content2 p {
+            text-align: justify;
+            font-size: 14px;
+            font-family: 'Poppins';
+        }
+
+        .gallery-dokter h2{
+            font-family: 'Poppins';
+            font-size: 30px;
+            text-align: center;
+            padding-bottom: 20px;
+        }
+
+        .gallery-grid {
+            display: flex;
+            flex-wrap: wrap;
+            grid-gap: 30px;
+            padding-bottom: 4rem;
+            justify-content: center;
+            margin: auto;
+            margin-bottom: 1.3rem;
+        }
+
+        .gallery-frame {
+            padding: .6rem;
+            font-size: 1rem;
+            font-family: 'Poppins';
+            text-align: center;
+            border-radius: 6px;
+            background-color: #64748354;
+            color: #000000;
+        }
+
+        .gallery-img {
+            max-width: 100%;
+            height: 300px;
+            object-fit: cover;
+            transition: .4s;
+            border-radius: 6px;
+        }
+
+        .gallery-img:hover {
+            transform: scale(1.03);
+            
+        }
+
+        .main3 {
+            display: flex;
+            flex-wrap: wrap;
+            width: 90%;
+            margin: auto;
+            margin-top: -40px;
+        }
+
+        .main3 .main-content3 {
+            position: relative;
+            margin-bottom: 4rem;
+            margin-top: 3rem;
+            width: 100%;
+        }
+
+        .main3 .main-content3 img {
+            position: relative;
+            float: left;
+            width: 450px;
+            height: 300px;
+            margin-right: 3rem;
+            object-fit: cover;
+            filter: brightness(50%);
+            border-radius: 0px 0px 50px 0px;
+            filter: drop-shadow(rgba(141, 141, 141, 0.699) 1rem 1rem 5px);
+        }
+
+        #tombol {
+            margin-top: 15px;
+            display: inline-block;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            color: #ffffff;
+            background-color: var(--footer-background);
+            border-radius: 10px;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .main-content3 .content3 h2 {
+            font-family: 'Poppins';
+            font-size: 30px;
+            padding-bottom: 1rem;
+        }
+
+        .main3 .main-content3 h2 span {
+            color: var(--footer-background);
+        }
+
+        .main3 .main-content3 p {
+            text-align: justify;
+            font-size: 14px;
+            font-family: 'Poppins';
+        }
+
+        .main3 .main-content3 .icon {
+            display: grid;
+            gap: 10px;
+            padding-top: 20px;
+        }
+
+        .main3 .main-content3 .isi {
+            position: relative;
+            line-height: 35px;
+            padding-left: 530px;
+            margin-top: -99px;
+        }
+
+        .testimoni {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .testimoni h2 {
+            font-size: 30px;
+            font-family: 'Poppins';
+            font-weight: 600;
+            margin-bottom: 2rem;
+        }
+
+        .wrapper {
+            background-color: #ffffff;
+            position: relative;
+            width: 80vw;
+            max-width: 91em;
+            min-height: 25em;
+            border-radius: 0.9em;
+            box-shadow: 0 1.8em 3em rgba(1, 17, 39, 0.15);
+            display: flex;
+            margin-bottom: 5rem;
+        }
+
+        .testimonial-container {
+            width: 85%;
+            height: 100%;
+            position: relative;
+            margin: auto;
+            padding: 1.8em 1.2em;
+        }
+
+        .wrapper button {
+            font-size: 1.8em;
+            height: 2.2em;
+            width: 2.2em;
+            background-color: #ffffff;
+            position: absolute;
+            margin: auto;
+            top: 0;
+            bottom: 0;
+            border: none;
+            color: #0a69ed;
+            box-shadow: 0 0 1em rgba(1, 17, 39, 0.25);
+            cursor: pointer;
+            border-radius: 50%;
+        }
+
+        button#next {
+            right: -1.1em;
+        }
+
+        button#prev {
+            left: -1.1em;
+        }
+
+        .testimonial-container p {
+            color: #8c8c90;
+            text-align: center;
+            font-size: 0.9em;
+            line-height: 2em;
+            letter-spacing: 0.05em;
+        }
+
+        .testimonial-container img {
+            display: block;
+            margin: 1.8em auto 1.25em auto;
+            border-radius: 50%;
+            width: 4.4em;
+        }
+
+        .testimonial-container h3 {
+            color: #2d3d67;
+            font-size: 1em;
+            text-align: center;
+        }
+
+        .testimonial-container h6 {
+            color: #bcc4da;
+            font-size: 0.9em;
+            letter-spacing: 0.03em;
+            font-weight: 400;
+            text-align: center;
+        }
+
+        #myBtn {
+            display: none;
+            position: fixed;
+            bottom: 30px;
+            right: 20px;
+            z-index: 99;
+            font-size: 18px;
+            border: none;
+            outline: none;
+            background-color: rgb(0, 140, 255);
+            color: white;
+            cursor: pointer;
+            padding: 15px;
+            width: 50px;
+            height: 50px;
+            border-radius: 30px;
+            transition: opacity 0.8s ease;
+        }
+
+        html,
+        body{
+            scroll-behavior: smooth;
+        }
+
+        #myBtn:hover {
+            background-color: #555;
+        }
+
+        /* fOOTER START */
+        /*? footer containers */
+        footer {
+            position: grid;
+            bottom: 0px;
+            background-color: var(--footer-background);
+            min-width: auto;
+            width: auto;
+            bottom: 0px;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .footer-wrapper {
+            display: flex;
+            background: var(--footer-background);
+            flex-direction: column;
+            max-width: 1320px;
+            padding: 20px;
+        }
+
+        /*? top section */
+        .footer-top {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: start;
+            align-items: start;
+            padding: 16px 0px;
+            justify-content: space-between;
+        }
+
+        .footer-subscribe {
+            display: flex;
+            gap: 17px;
+            flex-wrap: wrap;
+        }
+
+        .footer-subscribe>input {
+            border: 1px solid var(--button-border);
+            color: var(--text-color);
+            outline: none;
+            min-height: 36px;
+            background-color: var(--footer-background);
+            font-size: 1.2rem;
+            flex: 1 0 120px;
+            padding: 8px 12px;
+            border-radius: 8px;
+        }
+
+        .footer-subscribe>input::placeholder {
+            color: var(--text-color);
+        }
+
+        .footer-subscribe>button {
+            cursor: pointer;
+            background-color: var(--button-color);
+            border-radius: 8px;
+            color: white;
+            font-size: 1.25rem;
+            min-width: 120px;
+            min-height: 36px;
+            flex: 1 0 80px;
+            white-space: nowrap;
+            padding: 8px 12px;
+            border: 0px;
+            outline: none;
+            border: 1px solid var(--button-border);
+        }
+
+        /*? footer columns */
+        .footer-columns {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: start;
+            align-items: start;
+            flex: 2 0 140px;
+            width: 100%;
+            gap: 16px;
+            padding: 24px 8px 16px 8px;
+            margin: 0 auto;
+        }
+
+        .footer-columns ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-columns ul a {
+            color: var(--text-color);
+            text-decoration: none;
+        }
+
+        .footer-columns ul a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-columns ul li {
+            margin-bottom: 16px;
+            margin-right: 3rem;
+        }
+
+        .footer-columns h3 {
+            color: var(--text-primary);
+            margin-top: 0;
+            margin-bottom: 25px;
+            font-size: 1.25rem;
+        }
+
+        .footer-centering {
+            margin: 0 auto;
+        }
+
+        .footer-columns>section {
+            min-width: 150px;
+        }
+
+        .footer-logo {
+            display: flex;
+            flex-direction: row;
+            align-items: start;
+            justify-content: start;
+            gap: 16px;
+            color: var(--text-color);
+            margin-bottom: 60px;
+        }
+
+        .footer-logo img {
+            stroke: var(--text-color);
+            stroke-width: 8px;
+            width: 100px;
+            height: 90px;
+        }
+
+        /*? Footer bottom */
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            width: 100%;
+            gap: 16px;
+            padding: 16px 0px;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            color: var(--text-gray);
+        }
+
+        .footer-bottom>small {
+            font-size: 16px;
+            margin: 0 4px;
+        }
+
+        .footer-headline>h2 {
+            margin: 0px;
+            color: var(--text-primary);
+        }
+
+        .footer-headline>p {
+            color: var(--text-gray);
+            margin: 4px 0px 20px 0px;
+        }
+
+        .footer-line {
+            display: block;
+            min-width: 40px;
+            height: 2px;
+            background-color: var(--text-gray);
+        }
+
+        /*? socials */
+
+        .social-links {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .social-text {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .social-links img {
+            width: 24px;
+            height: 24px;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .social-links img:hover {
+            transform: scale(1.1);
+        }
+
+        .social-links ul {
+            display: flex;
+            gap: 12px;
+            list-style-type: none;
+        }
+
+        /* fOOTER END */
+
+
+        @media(max-width: 600px) {
+            html {
+                font-size: 55%;
+            }
+
+            #search {
+                display: inline-block;
+            }
+
+            #hamburger-menu {
+                display: inline-block;
+            }
+
+            #login {
+                display: none;
+            }
+
+            .navbar .navbar-nav {
+                position: absolute;
+                top: 100%;
+                right: 100%;
+                background: #fff;
+                width: 30rem;
+                height: 100vh;
+            }
+
+            .navbar .navbar-nav.active {
+                right: 0;
+            }
+
+            .navbar .navbar-nav a {
+                color: black;
+                display: block;
+                margin: 1.5rem;
+                padding: 0.5rem;
+                font-size: 2rem;
+            }
+
+            .hero .content h1 {
+                margin-top: -15rem;
+            }
+
+            .hero .content h1 span {
+                display: flex;
+            }
+
+            /* Footer start */
+            .footer-top {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                padding: 16px 8px 32px 8px;
+            }
+
+            .footer-bottom {
+                display: flex;
+                flex-direction: column-reverse;
+                align-items: space-between;
+                justify-content: center;
+                margin: 0 auto;
+            }
+
+            /* Footer End */
+        }
+    </style>
+    <!-- navbar start -->
+    <nav id="myNavbar" class="navbar">
+        <a href="index.html" class="navbar-logo">
+            <img src="img/logo.png" alt="Klinik Merika">
+        </a>
+
+        <div class="navbar-nav">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="pelayanan.html">Fasilitas & layanan</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="contact.html">Contact</a>
+            <a href="FAQ.html">FAQ</a>
+        </div>
+        <div class="navbar-extra">
+            <input class="search">
+            <a href="login.html" id="login"><i data-feather="user"></i></a>
+            <a href="#" id="hamburger-menu"><i data-feather="menu"></i></a>
+        </div>
+    </nav>
+    <button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fas fa-chevron-up"></i></button>
+    <!-- navbar end -->
+    <!-- hero section start -->
+    <section class="hero" id="Home">
+        <main class="content">
+            <h1> SELAMAT DATANG <br> DI <span>KLINIK MERIKA</span></h1>
+            <p>Hidup akan lebih sempurna jika Anda memiliki<br> kesehatan yang bagus</p>
+            <a href="about.html" class="btn">View More</a>
+        </main>
+    </section>
+    <!-- hero section end -->
+    <section class="menu">
+        <div class="row">
+            <div class="menu-col">
+                <i class="far fa-clock" style="color: #ffffff;"></i>
+                <h3>PELAYANAN 24 JAM</h3>
+                <p>Hotline : +1 982 2323 3443</p>
+                <a class="line"></a>
+            </div>
+            <div class="menu-col">
+                <i class="fas fa-user-clock" style="color: #ffffff;"></i>
+                <h3>BUAT JANJI</h3>
+                <a href="register.html">
+                    <p>Booking Dokter Disini !</p>
+                </a>
+                <a class="line"></a>
+            </div>
+            <div class="menu-col">
+                <i class="fas fa-mobile-alt" style="color: #ffffff;"></i>
+                <h3>KONSULTASI ONLINE</h3>
+                <p>Lakukan Konsultasi Online <br>di Aplikasi Kami</p>
+                <a class="line"></a>
+            </div>
+        </div>
+    </section>
+    <div class="main">
+        <div class="main-content">
+            <div class="content">
+                <img src="https://img.freepik.com/premium-photo/medical-chart-with-stethoscope-top-it_913665-3724.jpg?w=740"
+                    alt="Klinik">
+                <h2>Profil <span>Klinik Merika</span></h2>
+                <p>Klinik Merika adalah tempat di mana perawatan kesehatan berkualitas dan kepedulian
+                    terhadap setiap pasien adalah prioritas utama. Dengan tim profesional yang terdiri
+                    dari dokter ahli dan tenaga medis berpengalaman, kami berkomitmen untuk memberikan
+                    layanan medis terbaik kepada setiap individu yang mempercayakan kesehatannya kepada
+                    kami. Klinik Merika juga mengutamakan pendekatan yang holistik, memastikan bahwa
+                    seluruh aspek kesehatan fisik dan mental pasien kami tercakup dengan baik. Kami
+                    membangun hubungan yang kuat dengan setiap pasien, memberikan rasa nyaman dan
+                    percaya diri dalam perjalanan menuju kesehatan yang optimal. Dengan fasilitas modern
+                    dan teknologi terkini, Klinik Merika siap memberikan pelayanan terbaik dan solusi
+                    kesehatan yang dapat diandalkan bagi komunitas kami.</p>
+            </div>
+        </div>
+    </div>
+    <div class="video">
+        <video width="700" height="440" autoplay muted loop>
+            <source src="video/health.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    <div class="main2">
+        <div class="main-content2">
+            <div class="content2">
+                <img src="https://img.freepik.com/free-photo/male-patient-bed-talking-nurse_23-2148981201.jpg?w=740&t=st=1698287125~exp=1698287725~hmac=25493f455f34174d85ad4e39a8f5f7f480c3c3a52cc5326b10ff2a265c0db1f5"
+                    alt="Klinik">
+                <h2>Fasilitas & <span>Pelayanan</span></h2>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellendus dolorem suscipit non. Eum, esse
+                    odio accusamus illum corrupti optio obcaecati quis minus molestiae. Ipsum dolor sint tempore
+                    deleniti est nemo enim ex, quo asperiores ducimus voluptates architecto totam explicabo magni aut
+                    voluptatibus dolores expedita velit obcaecati eligendi nostrum officia eveniet? Nemo rerum alias
+                    numquam aperiam quo ipsa vitae doloremque architecto enim quod ab dicta dolor quis at, ullam fugiat
+                    cumque, excepturi animi voluptate ducimus aut. Culpa veritatis consequuntur voluptates voluptatibus
+                    nemo consectetur voluptate, natus libero tenetur nulla. Recusandae natus corrupti, eos at itaque
+                    veniam hic sunt fugiat cupiditate harum id.</p>
+                <a id="tombol" href="pelayanan.html">Read More</a>
+            </div>
+        </div>
+    </div>
+    <div class="gallery-dokter">
+        <h2>Tim Dokter</h2>
+    <div class="gallery-grid">
+        <figure class="gallery-frame">
+            <img class="gallery-img" src="https://img.freepik.com/free-photo/cheerful-doctor-with-hands-pockets_23-2147763875.jpg?w=360&t=st=1698392447~exp=1698393047~hmac=b2fb249ce40b60828a011238e6eef624bdc9612163815b1698a6e53333588bba" alt="symbol image"
+                title="symbol image">
+            <figcaption>Dokter Michael, dr</figcaption>
+        </figure>
+        <figure class="gallery-frame">
+            <img class="gallery-img" src="https://img.freepik.com/premium-photo/doctor-wearing-gloves-hospital_107420-70323.jpg" alt="symbol image"
+                title="symbol image">
+            <figcaption>Dokter Diana, MS</figcaption>
+        </figure>
+        <figure class="gallery-frame">
+            <img class="gallery-img" src="https://img.freepik.com/premium-photo/handsome-afro-american-doctor_656297-1011.jpg" alt="symbol image"
+                title="symbol image">
+            <figcaption>Dokter Jhonny</figcaption>
+        </figure>
+        <figure class="gallery-frame">
+            <img class="gallery-img" src="https://img.freepik.com/premium-photo/young-brunette-female-doctor-standing-with-clipboard-smiling-hospital-physician-ready-examine-patient_665183-5428.jpg" alt="symbol image"
+                title="symbol image">
+            <figcaption>Dokter Yulia</figcaption>
+        </figure>
+        <figure class="gallery-frame">
+            <img class="gallery-img" src="https://img.freepik.com/premium-photo/doctor-holding-clipboard_38810-7704.jpg" alt="symbol image"
+                title="symbol image">
+            <figcaption>Dokter Yu</figcaption>
+        </figure>
+    </div>
+</div>
+        <div class="main3">
+            <div class="main-content3">
+                <div class="content3">
+                    <img src="https://img.freepik.com/premium-photo/hospital-room-with-beds-comfortable-medical-equipped-modern-hospitalxaxa_84831-490.jpg?w=740"
+                        alt="Klinik">
+                    <h2>Kenapa <span>Klinik Merika?</span></h2>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sapiente fugit eum quis fuga. Eaque ea,
+                        dolorum atque quaerat aspernatur non deleniti in dolorem voluptatem rerum. Cupiditate rem sequi,
+                        voluptate iure culpa magnam adipisci veniam excepturi obcaecati dolore. Temporibus,
+                        reprehenderit.
+                        Doloribus veniam error optio dolores quos omnis exercitationem ipsum ducimus dolorum?</p>
+                    <div class="icon">
+                        <i data-feather="check-circle" class="text"></i>
+                        <i data-feather="check-circle" class="text"></i>
+                        <i data-feather="check-circle" class="text"></i>
+                    </div>
+                    <div class="isi">
+                        <p>Fasilitas dan Pelayanan Yang bagus</p>
+                        <p>Diatasi Oleh Dokter Ahli</p>
+                        <p>Tempat Yang Sehat dan bersih</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="testimoni">
+            <h2>Apa Kata Mereka</h2>
+            <div class="wrapper">
+                <div class="testimonial-container" id="testimonial-container"></div>
+                <button id="prev">&lt;</button>
+                <button id="next">&gt;</button>
+            </div>
+        </div>
+        <!-- Footer Start -->
+        <footer>
+            <div class="footer-wrapper">
+                <section class="footer-top">
+                    <div class="footer-headline">
+                        <h2>Subscribe Untuk Mendapatkan <br> Informasi Dari Kami</h2>
+                        <p>
+                            Stay up to date with our news and articles
+                        </p>
+                    </div>
+                    <div class="footer-subscribe">
+                        <input type="email" spellcheck="false" placeholder="Your Email">
+                        <button>
+                            Sign Up
+                        </button>
+                    </div>
+                </section>
+                <div class="footer-columns">
+                    <section class="footer-logo">
+                        <h2>
+                            <img src="img/logo.png">
+                        </h2>
+                    </section>
+                    <section>
+                        <h3>Hubungi Kami</h3>
+                        <ul>
+                            <li>
+                                <a href="#" title="Alamat">Jl.Pahlawan No.60 Desa Limusnunggal <br>Kecamatan Cileungsi
+                                    Bogor</a>
+                            </li>
+                            <li>
+                                <a href="#" title="telepon">(+1) 2344 4546 6656</a>
+                            </li>
+                            <li>
+                                <a href="#" title="Email">KlinikMerika@example.com</a>
+                            </li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h3>layanan</h3>
+                        <ul>
+                            <li>
+                                <a href="pelayanan.html" title="Poli Gigi">Poli Gigi</a>
+                            </li>
+                            <li>
+                                <a href="pelayanan.html" title="Test Diagnostik">Test Diagnostik</a>
+                            </li>
+                            <li>
+                                <a href="pelayanan.html" title="Konsultasi Dokter Umum">Konsultasi Dokter Umum</a>
+                            </li>
+                            <li>
+                                <a href="pelayanan.html" title="Pemeriksaan Fisik">Pemeriksaan Fisik</a>
+                            </li>
+                            <li>
+                                <a href="pelayanan.html" title="Faksinasi Dan Imunisasi">Faksinasi Dan Imunisasi</a>
+                            </li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h3>Links</h3>
+                        <ul>
+                            <li>
+                                <a href="about.html" title="About Us">About Us</a>
+                            </li>
+                            <li>
+                                <a href="pelayanan.html" title="Blog">Fasilitas Dan Pelayanan</a>
+                            </li>
+                            <li>
+                                <a href="gallery.html" title="Gallery">Gallery</a>
+                            </li>
+                            <li>
+                                <a href="contact.html" title="kontak">Contact</a>
+                            </li>
+                            <li>
+                                <a href="FAQ.html" title="FAQ">FAQ</a>
+                            </li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h3>Legal</h3>
+                        <ul>
+                            <li>
+                                <a href="#" title="Terms and services">
+                                    Terms
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" title="Privacy Policy">
+                                    Privacy
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" title="Cookies">
+                                    Cookies
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" title="Licenses">
+                                    Licenses
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" title="Cookies">
+                                    Contact
+                                </a>
+                            </li>
+                        </ul>
+                    </section>
+                </div>
+                <div class="footer-bottom">
+                    <div class='social-links'>
+                        <ul>
+                            <li>
+                                <a href="#" title="Instagram">
+                                    <img src="assets/instagram.svg" alt='Instagram'>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" title="Linkedin">
+                                    <img src="assets/linkedin.svg" alt='Linkedin'>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" title="Twitter">
+                                    <img src="assets/twitter.svg" alt='Twitter'>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" title="Youtube">
+                                    <img src="assets/youtube.svg" alt='YouTube'>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <small>© Mohamad Ar Raafi. <span id="year"></span>, Klinik Merika</small>
+                </div>
+            </div>
+        </footer>
+        <script>
+            document.getElementById("year").innerHTML = new Date().getFullYear();
+        </script>
+        <!-- Footer End -->
+        <script>
+            feather.replace();
+        </script>
+        <script src="js/script.js"></script>
+        <script src="js/up.js" ></script>
+</body>
+
+</html>
