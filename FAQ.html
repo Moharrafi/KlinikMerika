@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ</title>
+    <link rel='icon' href='img/logo.png'>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+
+<body>
+    <style>
+        :root {
+            --footer-background: #2681b6;
+            --text-color: #FAFBFC;
+            --text-gray: #FEFEFE;
+            --text-heading-gray: #F4F5F6;
+            --text-heading-gray: #F4F5F6;
+            --text-primary: #FAFBFC;
+            --button-color: #404652;
+            --button-border: #3b3c3d;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            outline: none;
+            border: none;
+            text-decoration: none;
+        }
+
+        body {
+            font-family: 'Poppins' sans-serif;
+            background-color: #81abcf54;
+            color: black;
+            min-height: auto;
+            margin: 0px;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.4rem 7%;
+            background-color: rgba(153, 152, 152, 0.329);
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 9999;
+        }
+
+        .navbar .navbar-logo img {
+            width: 90px;
+            height: 50px;
+            padding-right: 2rem;
+        }
+
+        .navbar .navbar-nav a {
+            color: #000000;
+            display: inline-block;
+            font-family: 'Poppins';
+            font-size: 1rem;
+            padding-top: 10px;
+            margin: 0 1rem;
+        }
+
+        .navbar .navbar-nav a:hover {
+            color: rgba(10, 151, 216, 0.8);
+        }
+
+        .navbar .navbar-nav a::after {
+            content: '';
+            display: block;
+            padding-bottom: 0.5rem;
+            border-bottom: 0.1rem solid var(--footer-background);
+            transform: scaleX(0);
+            transition: 0.2s linear;
+        }
+
+        .navbar .navbar-nav a:hover::after {
+            transform: scaleX(0.5);
+        }
+
+        .navbar .navbar-extra a {
+            color: #000000;
+            margin: 0 0.5rem;
+            font-size: 20px;
+        }
+
+        .navbar .navbar-extra a:hover {
+            color: #3ee0cf;
+        }
+
+        #image-mid {
+            margin: 0;
+            padding: 0;
+            height: 200px;
+        }
+
+        #image-cover {
+            margin-top: 98px;
+            background-image: url(img/about.jpg);
+            background-position: center center;
+            background-size: cover;
+            width: 100%;
+            height: 280px;
+            object-fit: none;
+            filter: brightness(60%);
+            pointer-events: none;
+        }
+
+        .search {
+            position: relative;
+            width: 50px;
+            height: 30px;
+            border-radius: 20px;
+            padding: 10px;
+            transition-duration: 500ms;
+            cursor: pointer;
+            background-repeat: no-repeat;
+            font-size: 18px;
+            color: transparent;
+            border: 0px solid transparent;
+            overflow: hidden;
+            background: url(img/search.svg) no-repeat transparent;
+            background-size: 25px;
+            background-position: 45% 0%;
+        }
+
+        .search:hover {
+            cursor: pointer;
+            border: 0px solid;
+            background: url(img/search.svg) no-repeat transparent;
+            background-size: 25px;
+            background-position: 45% 0%;
+        }
+
+        .search:focus {
+            width: 200px;
+            cursor: pointer;
+            padding-left: 35px;
+            color: black;
+            outline: none;
+            border: 1px solid black;
+            background: url(img/search.svg) no-repeat transparent;
+            background-size: 22px;
+            background-position: 3% 50%;
+        }
+
+        #hamburger-menu {
+            display: none;
+        }
+
+        .faq {
+            text-align: center;
+            margin: 7rem;
+        }
+
+        .faq h2 {
+            font-size: 30px;
+            font-family: 'Poppins';
+            font-weight: 500;
+            color: #303651;
+            margin-top: 6rem;
+        }
+
+        .faq-container {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: 4rem;
+            margin-top: -5rem;
+        }
+
+        details {
+            font-size: 1rem;
+            margin: 0 auto;
+            width: 100%;
+            background: #F6FAFF;
+            border-radius: 15px;
+            position: relative;
+            max-width: 600px;
+            border: 1px solid #C3DEFF;
+            transition: all 0.3s ease-in-out;
+        }
+
+        details:hover {
+            border: 1px solid #A4A1FF;
+        }
+
+
+        summary {
+            user-select: none;
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            list-style: none;
+            padding: 1em;
+            align-items: center;
+        }
+
+        summary:hover .faq-title {
+            opacity: 1;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary:focus {
+            outline: none;
+        }
+
+        summary:hover .expand-icon {
+            opacity: 1;
+        }
+
+        .faq-title {
+            color: #1C2035;
+            width: 90%;
+            opacity: 0.65;
+            transition: all 250ms ease-in-out;
+        }
+
+        .faq-content {
+            color: #303651;
+            padding: 0.2em 1em 1em 1em;
+            font-weight: 300;
+            line-height: 1.5;
+        }
+
+        .expand-icon {
+            opacity: 0.65;
+        }
+
+        .expand-icon {
+            pointer-events: none;
+            position: absolute;
+            right: 1em;
+            transition: all 150ms ease-out;
+        }
+
+        #myBtn {
+            display: none;
+            position: fixed;
+            bottom: 30px;
+            right: 20px;
+            z-index: 99;
+            font-size: 18px;
+            border: none;
+            outline: none;
+            background-color: rgb(0, 140, 255);
+            color: white;
+            cursor: pointer;
+            padding: 15px;
+            width: 50px;
+            height: 50px;
+            border-radius: 30px;
+        }
+
+        html,
+        body {
+            scroll-behavior: smooth;
+        }
+
+        #myBtn:hover {
+            background-color: #555;
+        }
+
+        /* fOOTER START */
+        /*? footer containers */
+        footer {
+            position: grid;
+            bottom: 0px;
+            background-color: var(--footer-background);
+            min-width: 300px;
+            width: auto;
+            bottom: 0px;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .footer-wrapper {
+            display: flex;
+            background: var(--footer-background);
+            flex-direction: column;
+            max-width: 1320px;
+            padding: 20px;
+        }
+
+        /*? top section */
+        .footer-top {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: start;
+            align-items: start;
+            padding: 16px 0px;
+            justify-content: space-between;
+        }
+
+        /*? footer subscribe */
+        .footer-subscribe {
+            display: flex;
+            gap: 17px;
+            flex-wrap: wrap;
+        }
+
+        .footer-subscribe>input {
+            border: 1px solid var(--button-border);
+            color: var(--text-color);
+            outline: none;
+            min-height: 36px;
+            background-color: var(--footer-background);
+            font-size: 1.2rem;
+            flex: 1 0 120px;
+            padding: 8px 12px;
+            border-radius: 8px;
+        }
+
+        .footer-subscribe>input::placeholder {
+            color: var(--text-color);
+        }
+
+        .footer-subscribe>button {
+            cursor: pointer;
+            background-color: var(--button-color);
+            border-radius: 8px;
+            color: white;
+            font-size: 1.25rem;
+            min-width: 120px;
+            min-height: 36px;
+            flex: 1 0 80px;
+            white-space: nowrap;
+            padding: 8px 12px;
+            border: 0px;
+            outline: none;
+            border: 1px solid var(--button-border);
+        }
+
+        /*? footer columns */
+        .footer-columns {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: start;
+            align-items: start;
+            flex: 2 0 140px;
+            width: 100%;
+            gap: 16px;
+            padding: 24px 8px 16px 8px;
+            margin: 0 auto;
+        }
+
+        .footer-columns ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-columns ul a {
+            color: var(--text-color);
+            text-decoration: none;
+        }
+
+        .footer-columns ul a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-columns ul li {
+            margin-bottom: 16px;
+            margin-right: 3rem;
+
+        }
+
+        .footer-columns h3 {
+            color: var(--text-primary);
+            margin-top: 0;
+            margin-bottom: 25px;
+            font-size: 1.25rem;
+        }
+
+        .footer-centering {
+            margin: 0 auto;
+        }
+
+        .footer-columns>section {
+            min-width: 150px;
+        }
+
+        .footer-logo {
+            display: flex;
+            flex-direction: row;
+            align-items: start;
+            justify-content: start;
+            gap: 16px;
+            color: var(--text-color);
+            margin-bottom: 60px;
+        }
+
+        .footer-logo img {
+            stroke: var(--text-color);
+            stroke-width: 8px;
+            width: 100px;
+            height: 90px;
+        }
+
+
+        /*? Footer bottom */
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            width: 100%;
+            gap: 16px;
+            padding: 16px 0px;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            color: var(--text-gray);
+        }
+
+        .footer-bottom>small {
+            font-size: 16px;
+            margin: 0 4px;
+        }
+
+        .footer-headline>h2 {
+            margin: 0px;
+            color: var(--text-primary);
+        }
+
+        .footer-headline>p {
+            color: var(--text-gray);
+            margin: 4px 0px 20px 0px;
+        }
+
+        .footer-line {
+            display: block;
+            min-width: 40px;
+            height: 2px;
+            background-color: var(--text-gray);
+        }
+
+        /*? socials */
+
+        .social-links {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .social-text {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .social-links img {
+            width: 24px;
+            height: 24px;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .social-links img:hover {
+            transform: scale(1.1);
+        }
+
+        .social-links ul {
+            display: flex;
+            gap: 12px;
+            list-style-type: none;
+        }
+
+        /* fOOTER END */
+    </style>
+    <!-- navbar start -->
+    <nav class="navbar">
+        <a href="index.html" class="navbar-logo">
+            <img src="img/logo.png" alt="Klinik Merika">
+        </a>
+        <div class="navbar-nav">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="pelayanan.html">Fasilitas & layanan</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="Contact.html">Contact</a>
+            <a style="color: rgba(10, 151, 216, 0.8);" href="FAQ.html">FAQ</a>
+        </div>
+        <div class="navbar-extra">
+            <input class="search">
+            <a href="login.html" id="login"><i data-feather="user"></i></a>
+            <a href="#" id="hamburger-menu"><i data-feather="menu"></i></a>
+        </div>
+    </nav>
+    <button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fas fa-chevron-up"></i></button>
+    <!-- navbar end -->
+
+    <!-- about section start -->
+    <section>
+        <div id="image-mid">
+            <div id="image-cover"></div>
+        </div>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <div class="faq">
+        <h2>FREQUENTLY ASKED QUESTIONS</h2>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quisquam dicta repellendus,<br> unde harum error
+            dolorem nostrum sint, a nihil perferendis, culpa enim sapiente dolores architecto.</p>
+    </div>
+    <div class="faq-container">
+        <details>
+            <summary>
+                <span class="faq-title">
+                    Apakah klinik menerima pasien tanpa janji temu (walk-in)?
+                </span>
+                <img src="assets/plus.svg" class="expand-icon" alt="Plus">
+            </summary>
+            <div class="faq-content">
+                Ya, kami menerima pasien tanpa janji temu. Namun, kami sarankan untuk membuat janji temu terlebih dahulu
+                untuk
+                meminimalkan waktu tunggu
+            </div>
+        </details>
+        <details>
+            <summary>
+                <span class="faq-title">
+                    Bagaimana cara membuat janji temu di klinik Merika?
+                </span>
+                <img src="assets/plus.svg" class="expand-icon" alt="Plus">
+            </summary>
+            <div class="faq-content">
+                Anda dapat membuat janji temu melalui telepon di nomor [nomor telepon klinik] atau melalui situs web
+                resmi kami
+                di [alamat website].
+            </div>
+        </details>
+        <details>
+            <summary>
+                <span class="faq-title">Apakah klinik Merika menerima asuransi kesehatan?</span>
+                <img src="assets/plus.svg" class="expand-icon" alt="Plus">
+            </summary>
+            <div class="faq-content">Ya, kami menerima sebagian besar jenis asuransi kesehatan. Silakan hubungi kami
+                untuk
+                informasi lebih lanjut tentang perusahaan asuransi yang bekerja sama dengan klinik kami.</div>
+        </details>
+        <details>
+            <summary>
+                <span class="faq-title">Berapa biaya konsultasi dokter di klinik Merika?</span>
+                <img src="assets/plus.svg" class="expand-icon" alt="Plus">
+            </summary>
+            <div class="faq-content"> Biaya konsultasi dokter bervariasi tergantung pada jenis konsultasi dan
+                spesialisasi
+                dokter. Informasi lebih lanjut dapat diperoleh dengan menghubungi kami.</div>
+        </details>
+        <details>
+            <summary>
+                <span class="faq-title">Apakah klinik Merika menyediakan layanan vaksinasi?</span>
+                <img src="assets/plus.svg" class="expand-icon" alt="Plus">
+            </summary>
+            <div class="faq-content"> Ya, kami menyediakan berbagai jenis vaksinasi untuk berbagai kelompok usia.
+                Silakan
+                hubungi kami untuk jadwal dan informasi lebih lanjut</div>
+        </details>
+    </div>
+    <script src="FAQ.js"></script>
+    <!-- Footer Start -->
+    <footer>
+        <div class="footer-wrapper">
+            <section class="footer-top">
+                <div class="footer-headline">
+                    <h2>Subscribe Untuk Mendapatkan <br> Informasi Dari Kami</h2>
+                    <p>
+                        Stay up to date with our news and articles
+                    </p>
+                </div>
+                <div class="footer-subscribe">
+                    <input type="email" spellcheck="false" placeholder="Your Email">
+                    <button>
+                        Sign Up
+                    </button>
+                </div>
+            </section>
+            <div class="footer-columns">
+                <section class="footer-logo">
+                    <h2>
+                        <img src="img/logo.png">
+                    </h2>
+                </section>
+                <section>
+                    <h3>Hubungi Kami</h3>
+                    <ul>
+                        <li>
+                            <a href="#" title="Alamat">Jl.Pahlawan No.60 Desa Limusnunggal <br>Kecamatan Cileungsi
+                                Bogor</a>
+                        </li>
+                        <li>
+                            <a href="#" title="telepon">(+1) 2344 4546 6656</a>
+                        </li>
+                        <li>
+                            <a href="#" title="Email">KlinikMerika@example.com</a>
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>layanan</h3>
+                    <ul>
+                        <li>
+                            <a href="#" title="Poli Gigi">Poli Gigi</a>
+                        </li>
+                        <li>
+                            <a href="#" title="Sitemap">Test Diagnostik</a>
+                        </li>
+                        <li>
+                            <a href="#" title="Newsletter">Konsultasi Dokter Umum</a>
+                        </li>
+                        <li>
+                            <a href="#" title="Help Centre">Pemeriksaan Fisik</a>
+                        </li>
+                        <li>
+                            <a href="#" title="Investor">Faksinasi Dan Imunisasi</a>
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Links</h3>
+                    <ul>
+                        <li>
+                            <a href="pelayanan.html" title="Poli Gigi">Poli Gigi</a>
+                        </li>
+                        <li>
+                            <a href="pelayanan.html" title="Test Diagnostik">Test Diagnostik</a>
+                        </li>
+                        <li>
+                            <a href="pelayanan.html" title="Konsultasi Dokter Umum">Konsultasi Dokter Umum</a>
+                        </li>
+                        <li>
+                            <a href="pelayanan.html" title="Pemeriksaan Fisik">Pemeriksaan Fisik</a>
+                        </li>
+                        <li>
+                            <a href="pelayanan.html" title="Faksinasi Dan Imunisasi">Faksinasi Dan Imunisasi</a>
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Legal</h3>
+                    <ul>
+                        <li>
+                            <a href="#" title="Terms and services">
+                                Terms
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" title="Privacy Policy">
+                                Privacy
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" title="Cookies">
+                                Cookies
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" title="Licenses">
+                                Licenses
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" title="Cookies">
+                                Contact
+                            </a>
+                        </li>
+                    </ul>
+                </section>
+            </div>
+            <div class="footer-bottom">
+                <div class='social-links'>
+                    <ul>
+                        <li>
+                            <a href="#" title="Instagram">
+                                <img src="assets/instagram.svg" alt='Instagram'>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" title="Linkedin">
+                                <img src="assets/linkedin.svg" alt='Linkedin'>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" title="Twitter">
+                                <img src="assets/twitter.svg" alt='Twitter'>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" title="Youtube">
+                                <img src="assets/youtube.svg" alt='YouTube'>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <small>© Mohamad Ar Raafi. <span id="year"></span>, Klinik Merika</small>
+            </div>
+        </div>
+    </footer>
+    <script>
+        document.getElementById("year").innerHTML = new Date().getFullYear();
+    </script>
+    <script>
+        feather.replace();
+    </script>
+    <script src="js/up.js"></script>
+    <!-- Footer End -->
+</body>
+
+</html>
